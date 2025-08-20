@@ -1,0 +1,608 @@
+# Data Visualization Guide
+
+A comprehensive guide to creating effective data visualizations using our charting library and best practices.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Chart Types](#chart-types)
+- [Getting Started](#getting-started)
+- [Best Practices](#best-practices)
+- [Interactive Examples](#interactive-examples)
+
+## Introduction
+
+Data visualization is the graphical representation of information and data. By using visual elements like charts, graphs, and maps, data visualization tools provide an accessible way to see and understand trends, outliers, and patterns in data.
+
+### Why Data Visualization Matters
+
+- **Clarity**: Visual representations make complex data easier to understand
+- **Insights**: Patterns and trends become more apparent
+- **Communication**: Data stories are more engaging and memorable
+- **Decision Making**: Faster and more informed decisions
+
+## Chart Types
+
+### Bar Charts
+
+Bar charts are excellent for comparing quantities across categories.
+
+```jsx
+import { BarChart } from '@company/charts';
+
+const data = [
+  { category: 'Q1', value: 120 },
+  { category: 'Q2', value: 150 },
+  { category: 'Q3', value: 180 },
+  { category: 'Q4', value: 200 },
+];
+
+<BarChart
+  data={data}
+  xField="category"
+  yField="value"
+  title="Quarterly Revenue"
+  color="#3B82F6"
+/>
+```
+
+**Best Use Cases:**
+- Comparing values across categories
+- Showing rankings
+- Displaying survey results
+- Time series data (when categories represent time periods)
+
+### Line Charts
+
+Line charts are perfect for showing trends over time.
+
+```jsx
+import { LineChart } from '@company/charts';
+
+const data = [
+  { date: '2024-01', users: 1000 },
+  { date: '2024-02', users: 1200 },
+  { date: '2024-03', users: 1500 },
+  { date: '2024-04', users: 1800 },
+  { date: '2024-05', users: 2200 },
+  { date: '2024-06', users: 2500 },
+];
+
+<LineChart
+  data={data}
+  xField="date"
+  yField="users"
+  title="User Growth Over Time"
+  showGrid={true}
+  showPoints={true}
+/>
+```
+
+**Best Use Cases:**
+- Time series data
+- Continuous data trends
+- Multiple data series comparison
+- Forecasting and predictions
+
+### Pie Charts
+
+Pie charts show parts of a whole.
+
+```jsx
+import { PieChart } from '@company/charts';
+
+const data = [
+  { label: 'Desktop', value: 45, color: '#3B82F6' },
+  { label: 'Mobile', value: 35, color: '#10B981' },
+  { label: 'Tablet', value: 20, color: '#F59E0B' },
+];
+
+<PieChart
+  data={data}
+  labelField="label"
+  valueField="value"
+  colorField="color"
+  title="Device Usage Distribution"
+  showLegend={true}
+  showValues={true}
+/>
+```
+
+**Best Use Cases:**
+- Showing composition or distribution
+- Comparing parts to the whole
+- Simple categorical data
+- When you have 2-7 categories
+
+### Scatter Plots
+
+Scatter plots show the relationship between two variables.
+
+```jsx
+import { ScatterPlot } from '@company/charts';
+
+const data = [
+  { x: 10, y: 20, size: 5, category: 'A' },
+  { x: 15, y: 25, size: 8, category: 'B' },
+  { x: 20, y: 30, size: 12, category: 'A' },
+  { x: 25, y: 35, size: 6, category: 'B' },
+];
+
+<ScatterPlot
+  data={data}
+  xField="x"
+  yField="y"
+  sizeField="size"
+  colorField="category"
+  title="Correlation Analysis"
+  showTrendLine={true}
+/>
+```
+
+**Best Use Cases:**
+- Correlation analysis
+- Outlier detection
+- Clustering identification
+- Two-dimensional data exploration
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install @company/charts
+```
+
+### Basic Setup
+
+```jsx
+import { ChartProvider, BarChart, LineChart } from '@company/charts';
+
+function App() {
+  return (
+    <ChartProvider>
+      <div>
+        <h1>Data Dashboard</h1>
+        <BarChart data={barData} />
+        <LineChart data={lineData} />
+      </div>
+    </ChartProvider>
+  );
+}
+```
+
+### Data Format
+
+Our charts expect data in a consistent format:
+
+```jsx
+// Standard data structure
+const data = [
+  { category: 'A', value: 100, color: '#3B82F6' },
+  { category: 'B', value: 200, color: '#10B981' },
+  { category: 'C', value: 150, color: '#F59E0B' },
+];
+
+// Time series data
+const timeData = [
+  { date: '2024-01-01', value: 100 },
+  { date: '2024-01-02', value: 120 },
+  { date: '2024-01-03', value: 110 },
+];
+```
+
+## Best Practices
+
+### Color Selection
+
+Choose colors that are:
+- **Accessible**: Ensure sufficient contrast
+- **Meaningful**: Use consistent color schemes
+- **Distinct**: Avoid similar colors for different categories
+
+```jsx
+// Good color palette
+const colors = {
+  primary: '#3B82F6',    // Blue
+  success: '#10B981',    // Green
+  warning: '#F59E0B',    // Yellow
+  danger: '#EF4444',     // Red
+  neutral: '#6B7280',    // Gray
+};
+
+// Apply to chart
+<BarChart
+  data={data}
+  colors={colors}
+  colorField="category"
+/>
+```
+
+### Typography
+
+- Use clear, readable fonts
+- Maintain consistent font sizes
+- Ensure proper hierarchy with headings
+- Use appropriate font weights
+
+### Layout and Spacing
+
+- Provide adequate white space
+- Align elements consistently
+- Use grid systems for complex layouts
+- Ensure responsive design
+
+### Interactivity
+
+Add meaningful interactions:
+
+```jsx
+<BarChart
+  data={data}
+  onBarClick={(bar) => console.log('Clicked:', bar)}
+  onBarHover={(bar) => showTooltip(bar)}
+  tooltip={{
+    show: true,
+    format: (value) => `$${value.toLocaleString()}`,
+  }}
+/>
+```
+
+## Interactive Examples
+
+### Dashboard with Multiple Charts
+
+```jsx
+import { Grid, Card } from '@company/react-components';
+import { BarChart, LineChart, PieChart } from '@company/charts';
+
+function AnalyticsDashboard() {
+  const [selectedTimeframe, setSelectedTimeframe] = useState('7d');
+  const [chartData, setChartData] = useState({});
+
+  useEffect(() => {
+    // Fetch data based on selected timeframe
+    fetchChartData(selectedTimeframe).then(setChartData);
+  }, [selectedTimeframe]);
+
+  return (
+    <div>
+      <div className="dashboard-header">
+        <h1>Analytics Dashboard</h1>
+        <select 
+          value={selectedTimeframe} 
+          onChange={(e) => setSelectedTimeframe(e.target.value)}
+        >
+          <option value="7d">Last 7 Days</option>
+          <option value="30d">Last 30 Days</option>
+          <option value="90d">Last 90 Days</option>
+        </select>
+      </div>
+
+      <Grid>
+        {/* Revenue Chart */}
+        <Grid.Item span={8}>
+          <Card>
+            <Card.Header>
+              <h3>Revenue Trend</h3>
+            </Card.Header>
+            <Card.Body>
+              <LineChart
+                data={chartData.revenue}
+                xField="date"
+                yField="amount"
+                title="Revenue Over Time"
+                showGrid={true}
+                showPoints={true}
+                color="#10B981"
+              />
+            </Card.Body>
+          </Card>
+        </Grid.Item>
+
+        {/* Category Distribution */}
+        <Grid.Item span={4}>
+          <Card>
+            <Card.Header>
+              <h3>Revenue by Category</h3>
+            </Card.Header>
+            <Card.Body>
+              <PieChart
+                data={chartData.categories}
+                labelField="category"
+                valueField="revenue"
+                title="Category Distribution"
+                showLegend={true}
+                showValues={true}
+              />
+            </Card.Body>
+          </Card>
+        </Grid.Item>
+
+        {/* Top Products */}
+        <Grid.Item span={12}>
+          <Card>
+            <Card.Header>
+              <h3>Top Performing Products</h3>
+            </Card.Header>
+            <Card.Body>
+              <BarChart
+                data={chartData.products}
+                xField="product"
+                yField="sales"
+                title="Product Sales"
+                color="#3B82F6"
+                horizontal={true}
+                showValues={true}
+              />
+            </Card.Body>
+          </Card>
+        </Grid.Item>
+      </Grid>
+    </div>
+  );
+}
+```
+
+### Interactive Chart with Filters
+
+```jsx
+import { useState, useEffect } from 'react';
+import { Card, Button, Input } from '@company/react-components';
+import { LineChart, BarChart } from '@company/charts';
+
+function InteractiveChart() {
+  const [data, setData] = useState([]);
+  const [filters, setFilters] = useState({
+    startDate: '',
+    endDate: '',
+    category: 'all',
+    metric: 'revenue'
+  });
+  const [chartType, setChartType] = useState('line');
+
+  useEffect(() => {
+    // Apply filters and fetch data
+    fetchFilteredData(filters).then(setData);
+  }, [filters]);
+
+  const handleFilterChange = (field, value) => {
+    setFilters(prev => ({ ...prev, [field]: value }));
+  };
+
+  const resetFilters = () => {
+    setFilters({
+      startDate: '',
+      endDate: '',
+      category: 'all',
+      metric: 'revenue'
+    });
+  };
+
+  return (
+    <Card>
+      <Card.Header>
+        <h3>Interactive Data Analysis</h3>
+        <div className="chart-controls">
+          <Button
+            variant={chartType === 'line' ? 'primary' : 'secondary'}
+            onClick={() => setChartType('line')}
+          >
+            Line Chart
+          </Button>
+          <Button
+            variant={chartType === 'bar' ? 'primary' : 'secondary'}
+            onClick={() => setChartType('bar')}
+          >
+            Bar Chart
+          </Button>
+        </div>
+      </Card.Header>
+
+      <Card.Body>
+        {/* Filters */}
+        <div className="filters">
+          <Input
+            label="Start Date"
+            type="date"
+            value={filters.startDate}
+            onChange={(e) => handleFilterChange('startDate', e.target.value)}
+          />
+          <Input
+            label="End Date"
+            type="date"
+            value={filters.endDate}
+            onChange={(e) => handleFilterChange('endDate', e.target.value)}
+          />
+          <select
+            value={filters.category}
+            onChange={(e) => handleFilterChange('category', e.target.value)}
+          >
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="books">Books</option>
+          </select>
+          <select
+            value={filters.metric}
+            onChange={(e) => handleFilterChange('metric', e.target.value)}
+          >
+            <option value="revenue">Revenue</option>
+            <option value="orders">Orders</option>
+            <option value="customers">Customers</option>
+          </select>
+          <Button onClick={resetFilters}>Reset Filters</Button>
+        </div>
+
+        {/* Chart */}
+        <div className="chart-container">
+          {chartType === 'line' ? (
+            <LineChart
+              data={data}
+              xField="date"
+              yField={filters.metric}
+              title={`${filters.metric.charAt(0).toUpperCase() + filters.metric.slice(1)} Over Time`}
+              showGrid={true}
+              showPoints={true}
+              color="#3B82F6"
+            />
+          ) : (
+            <BarChart
+              data={data}
+              xField="date"
+              yField={filters.metric}
+              title={`${filters.metric.charAt(0).toUpperCase() + filters.metric.slice(1)} by Date`}
+              color="#10B981"
+              showValues={true}
+            />
+          )}
+        </div>
+      </Card.Body>
+    </Card>
+  );
+}
+```
+
+### Real-time Chart Updates
+
+```jsx
+import { useState, useEffect } from 'react';
+import { LineChart } from '@company/charts';
+
+function RealTimeChart() {
+  const [data, setData] = useState([]);
+  const [isConnected, setIsConnected] = useState(false);
+
+  useEffect(() => {
+    // Simulate WebSocket connection
+    const ws = new WebSocket('wss://api.example.com/realtime');
+    
+    ws.onopen = () => setIsConnected(true);
+    ws.onclose = () => setIsConnected(false);
+    
+    ws.onmessage = (event) => {
+      const newDataPoint = JSON.parse(event.data);
+      setData(prev => {
+        const updated = [...prev, newDataPoint];
+        // Keep only last 100 data points
+        return updated.slice(-100);
+      });
+    };
+
+    return () => ws.close();
+  }, []);
+
+  return (
+    <div>
+      <div className="status">
+        Status: {isConnected ? '🟢 Connected' : '🔴 Disconnected'}
+      </div>
+      
+      <LineChart
+        data={data}
+        xField="timestamp"
+        yField="value"
+        title="Real-time Data Stream"
+        showGrid={true}
+        showPoints={false}
+        color="#EF4444"
+        animate={true}
+        updateInterval={1000}
+      />
+    </div>
+  );
+}
+```
+
+## Performance Optimization
+
+### Large Dataset Handling
+
+```jsx
+import { useMemo } from 'react';
+import { LineChart } from '@company/charts';
+
+function OptimizedChart({ rawData }) {
+  // Memoize processed data
+  const processedData = useMemo(() => {
+    if (rawData.length > 10000) {
+      // Downsample large datasets
+      return downsampleData(rawData, 1000);
+    }
+    return rawData;
+  }, [rawData]);
+
+  return (
+    <LineChart
+      data={processedData}
+      xField="timestamp"
+      yField="value"
+      title="Large Dataset Visualization"
+      enableVirtualization={true}
+      maxDataPoints={1000}
+    />
+  );
+}
+```
+
+### Lazy Loading
+
+```jsx
+import { lazy, Suspense } from 'react';
+
+const ChartComponent = lazy(() => import('./ChartComponent'));
+
+function Dashboard() {
+  return (
+    <Suspense fallback={<div>Loading chart...</div>}>
+      <ChartComponent />
+    </Suspense>
+  );
+}
+```
+
+## Accessibility
+
+### Screen Reader Support
+
+```jsx
+<LineChart
+  data={data}
+  xField="date"
+  yField="value"
+  title="Revenue Trend"
+  ariaLabel="Line chart showing revenue trends over time"
+  ariaDescription="This chart displays monthly revenue data from January to December 2024"
+  showDataTable={true} // Provides tabular data for screen readers
+/>
+```
+
+### Keyboard Navigation
+
+```jsx
+<BarChart
+  data={data}
+  xField="category"
+  yField="value"
+  keyboardNavigation={true}
+  focusable={true}
+  onKeyDown={(event, bar) => {
+    if (event.key === 'Enter') {
+      selectBar(bar);
+    }
+  }}
+/>
+```
+
+## Conclusion
+
+Effective data visualization requires careful consideration of:
+- **Chart type selection** based on data characteristics
+- **Design principles** for clarity and accessibility
+- **Interactive features** that enhance user experience
+- **Performance optimization** for large datasets
+- **Accessibility** for all users
+
+By following these guidelines and using our charting library, you can create compelling and informative data visualizations that drive insights and engagement.
+
+For more advanced features and customization options, refer to our [API Documentation](https://docs.company.com/charts) and [Examples Gallery](https://examples.company.com/charts). 
