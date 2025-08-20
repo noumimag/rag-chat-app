@@ -85,5 +85,8 @@ node scripts/eval.js --questions ./data/samples/questions.json --k 5
 ## 🤝 Contributing
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
+## 📋 Changelog
+See [CHANGELOG.md](./CHANGELOG.md) for a detailed history of changes and releases.
+
 ## 📄 License
 MIT
