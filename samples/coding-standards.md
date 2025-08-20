@@ -1,6 +1,7 @@
 # Coding Standards and Best Practices
 
 ## Table of Contents
+
 1. [General Principles](#general-principles)
 2. [Code Style](#code-style)
 3. [JavaScript/TypeScript](#javascripttypescript)
@@ -13,6 +14,7 @@
 ## General Principles
 
 ### Code Quality
+
 - Write code that is readable, maintainable, and self-documenting
 - Follow the DRY principle (Don't Repeat Yourself)
 - Keep functions small and focused on a single responsibility
@@ -20,6 +22,7 @@
 - Comment complex logic, not obvious code
 
 ### Performance
+
 - Optimize for readability first, performance second
 - Profile before optimizing
 - Use appropriate data structures and algorithms
@@ -27,6 +30,7 @@
 - Implement caching where appropriate
 
 ### Maintainability
+
 - Write code that others can understand and modify
 - Use consistent formatting and naming conventions
 - Refactor regularly to improve code structure
@@ -36,6 +40,7 @@
 ## Code Style
 
 ### Naming Conventions
+
 - **Variables**: Use camelCase for JavaScript/TypeScript, snake_case for Python
 - **Constants**: Use UPPER_SNAKE_CASE
 - **Functions**: Use camelCase for JavaScript/TypeScript, snake_case for Python
@@ -43,12 +48,14 @@
 - **Files**: Use kebab-case for file names
 
 ### Formatting
+
 - Use consistent indentation (2 spaces for JavaScript/TypeScript, 4 for Python)
 - Limit line length to 80-120 characters
 - Use meaningful whitespace to improve readability
 - Align related code blocks consistently
 
 ### Comments
+
 - Write comments that explain "why", not "what"
 - Use JSDoc for JavaScript/TypeScript functions
 - Keep comments up to date with code changes
@@ -57,6 +64,7 @@
 ## JavaScript/TypeScript
 
 ### Variable Declarations
+
 ```typescript
 // Good
 const API_BASE_URL = 'https://api.example.com';
@@ -70,6 +78,7 @@ const u = { id: 1, name: 'John' };
 ```
 
 ### Function Definitions
+
 ```typescript
 // Good
 function calculateTotal(items: Item[], taxRate: number): number {
@@ -88,6 +97,7 @@ function calc(items, rate) {
 ```
 
 ### Error Handling
+
 ```typescript
 // Good
 async function fetchUserData(userId: string): Promise<User> {
@@ -111,6 +121,7 @@ async function fetchUserData(userId) {
 ```
 
 ### TypeScript Best Practices
+
 - Use strict mode (`"strict": true` in tsconfig.json)
 - Define interfaces for all data structures
 - Use union types and generics appropriately
@@ -120,18 +131,19 @@ async function fetchUserData(userId) {
 ## Python
 
 ### Code Style
+
 ```python
 # Good
 def calculate_user_score(user_data: dict, weights: dict) -> float:
     """Calculate user score based on weighted criteria."""
     if not user_data or not weights:
         raise ValueError("User data and weights are required")
-    
+
     total_score = 0.0
     for criterion, weight in weights.items():
         if criterion in user_data:
             total_score += user_data[criterion] * weight
-    
+
     return round(total_score, 2)
 
 # Bad
@@ -144,6 +156,7 @@ def calc_score(data, w):
 ```
 
 ### Pythonic Patterns
+
 ```python
 # Good - List comprehensions
 squares = [x**2 for x in range(10) if x % 2 == 0]
@@ -163,6 +176,7 @@ for index, item in enumerate(items):
 ## Database
 
 ### SQL Best Practices
+
 ```sql
 -- Good - Use meaningful table and column names
 CREATE TABLE user_profiles (
@@ -184,6 +198,7 @@ CREATE INDEX idx_user_profiles_user_id ON user_profiles(user_id);
 ```
 
 ### Query Optimization
+
 - Use `EXPLAIN ANALYZE` to understand query performance
 - Avoid `SELECT *` - specify only needed columns
 - Use appropriate JOIN types (INNER, LEFT, RIGHT)
@@ -193,6 +208,7 @@ CREATE INDEX idx_user_profiles_user_id ON user_profiles(user_id);
 ## Security
 
 ### Input Validation
+
 ```typescript
 // Good - Validate and sanitize input
 function validateEmail(email: string): boolean {
@@ -212,6 +228,7 @@ function processEmail(email: string) {
 ```
 
 ### Authentication and Authorization
+
 - Use secure authentication methods (OAuth 2.0, JWT)
 - Implement proper session management
 - Use HTTPS for all communications
@@ -219,6 +236,7 @@ function processEmail(email: string) {
 - Validate user permissions for all operations
 
 ### Data Protection
+
 - Encrypt sensitive data at rest and in transit
 - Use environment variables for configuration
 - Never commit secrets to version control
@@ -228,6 +246,7 @@ function processEmail(email: string) {
 ## Testing
 
 ### Unit Testing
+
 ```typescript
 // Good - Comprehensive test coverage
 describe('UserService', () => {
@@ -237,11 +256,11 @@ describe('UserService', () => {
         email: 'test@example.com',
         password: 'securepassword123',
         firstName: 'John',
-        lastName: 'Doe'
+        lastName: 'Doe',
       };
-      
+
       const result = await userService.createUser(userData);
-      
+
       expect(result).toHaveProperty('id');
       expect(result.email).toBe(userData.email);
       expect(result.password).not.toBe(userData.password); // Should be hashed
@@ -252,17 +271,17 @@ describe('UserService', () => {
         email: 'invalid-email',
         password: 'securepassword123',
         firstName: 'John',
-        lastName: 'Doe'
+        lastName: 'Doe',
       };
-      
-      await expect(userService.createUser(userData))
-        .rejects.toThrow('Invalid email format');
+
+      await expect(userService.createUser(userData)).rejects.toThrow('Invalid email format');
     });
   });
 });
 ```
 
 ### Testing Best Practices
+
 - Write tests before or alongside code (TDD/BDD)
 - Test both happy path and edge cases
 - Use descriptive test names
@@ -273,15 +292,16 @@ describe('UserService', () => {
 ## Documentation
 
 ### Code Documentation
-```typescript
+
+````typescript
 /**
  * Calculates the total price including tax and discounts.
- * 
+ *
  * @param items - Array of items with price and quantity
  * @param taxRate - Tax rate as decimal (e.g., 0.08 for 8%)
  * @param discountCode - Optional discount code for additional savings
  * @returns Total price rounded to 2 decimal places
- * 
+ *
  * @example
  * ```typescript
  * const items = [{ price: 10, quantity: 2 }];
@@ -289,16 +309,13 @@ describe('UserService', () => {
  * console.log(total); // 19.44
  * ```
  */
-function calculateTotal(
-  items: Item[], 
-  taxRate: number, 
-  discountCode?: string
-): number {
+function calculateTotal(items: Item[], taxRate: number, discountCode?: string): number {
   // Implementation...
 }
-```
+````
 
 ### API Documentation
+
 - Use OpenAPI/Swagger for REST APIs
 - Document all endpoints, parameters, and responses
 - Include example requests and responses
@@ -306,6 +323,7 @@ function calculateTotal(
 - Keep documentation up to date with code changes
 
 ### README Files
+
 - Include project overview and purpose
 - Document installation and setup steps
 - Provide usage examples
@@ -316,6 +334,7 @@ function calculateTotal(
 ## Code Review Guidelines
 
 ### What to Look For
+
 - Code correctness and logic
 - Security vulnerabilities
 - Performance implications
@@ -324,6 +343,7 @@ function calculateTotal(
 - Documentation quality
 
 ### Review Process
+
 - Be constructive and respectful
 - Focus on the code, not the person
 - Suggest improvements with examples
@@ -333,6 +353,7 @@ function calculateTotal(
 ## Continuous Integration
 
 ### Automated Checks
+
 - Run tests on every commit
 - Check code style and formatting
 - Run security scans
@@ -340,6 +361,7 @@ function calculateTotal(
 - Monitor code coverage trends
 
 ### Quality Gates
+
 - All tests must pass
 - Code coverage above threshold
 - No security vulnerabilities
@@ -349,10 +371,11 @@ function calculateTotal(
 ## Conclusion
 
 Following these coding standards will help create:
+
 - More maintainable and readable code
 - Fewer bugs and security vulnerabilities
 - Better team collaboration
 - Easier onboarding for new developers
 - Higher code quality overall
 
-Remember: Good code is not just about functionality, but about maintainability, readability, and collaboration. 
+Remember: Good code is not just about functionality, but about maintainability, readability, and collaboration.

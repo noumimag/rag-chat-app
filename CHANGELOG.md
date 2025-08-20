@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Initial project setup with React + TypeScript + Vite
 - On-device embeddings via Transformers.js (WebGPU first, WASM fallback)
 - Chunking in a Web Worker with vectors stored in IndexedDB (Dexie)
@@ -19,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Offline-friendly design
 
 ### Technical Features
+
 - Browser-native RAG implementation
 - Cosine similarity + MMR reranking for vector search
 - WebGPU acceleration with WASM fallback
@@ -30,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - RAG+LLM
 
 ### Initial Release
+
 - Complete RAG chat application
 - Browser-native embeddings and vector storage
 - Multi-provider LLM support
@@ -46,4 +49,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Contributing
 
-To add entries to this changelog, please follow the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format and submit a pull request. 
+To add entries to this changelog, please follow the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format and submit a pull request.

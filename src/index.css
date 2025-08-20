@@ -6,7 +6,7 @@
   html {
     font-family: system-ui, sans-serif;
   }
-  
+
   body {
     margin: 0;
     padding: 0;
@@ -19,31 +19,31 @@
     @apply fixed left-0 top-0 h-full w-80 bg-gray-900 text-white shadow-2xl;
     @apply z-40;
   }
-  
+
   .rag-content {
-    @apply h-full flex flex-col overflow-hidden bg-black;
+    @apply flex h-full flex-col overflow-hidden bg-black;
   }
-  
+
   .rag-header {
     @apply p-6;
   }
-  
+
   .rag-body {
     @apply flex-1 overflow-y-auto;
   }
-  
+
   .rag-footer {
-    @apply p-4 border-t border-gray-700 bg-gray-800;
+    @apply border-t border-gray-700 bg-gray-800 p-4;
   }
-  
+
   .chat-container {
-    @apply fixed left-80 top-0 right-0 h-full flex flex-col bg-gray-900;
+    @apply fixed left-80 right-0 top-0 flex h-full flex-col bg-gray-900;
   }
-  
+
   .chat-header {
-    @apply px-6 py-4 flex-shrink-0 text-white;
+    @apply flex-shrink-0 px-6 py-4 text-white;
   }
-  
+
   .chat-messages {
     overflow-y: auto;
     padding: 1.5rem;
@@ -53,7 +53,7 @@
     position: absolute;
     height: 80vh;
   }
-  
+
   .chat-input-container {
     @apply p-6;
     position: fixed;
@@ -63,27 +63,27 @@
     z-index: 20;
     box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
   }
-  
+
   .hover\:bg-gray-750:hover {
     background-color: rgb(55 65 81);
   }
-  
+
   .chunk-card {
-    @apply p-3 bg-gray-50 rounded-lg border border-gray-200 mb-3;
-    @apply hover:bg-gray-100 transition-colors duration-200;
+    @apply mb-3 rounded-lg border border-gray-200 bg-gray-50 p-3;
+    @apply transition-colors duration-200 hover:bg-gray-100;
   }
-  
+
   .citation {
-    @apply inline-block px-2 py-1 bg-primary-100 text-primary-800 text-xs rounded;
-    @apply hover:bg-primary-200 transition-colors duration-200 cursor-pointer;
+    @apply inline-block rounded bg-primary-100 px-2 py-1 text-xs text-primary-800;
+    @apply cursor-pointer transition-colors duration-200 hover:bg-primary-200;
   }
-  
+
   .streaming-text {
     @apply whitespace-pre-wrap;
   }
-  
+
   .typing-indicator {
-    @apply inline-block w-2 h-4 bg-primary-600 animate-pulse;
+    @apply inline-block h-4 w-2 animate-pulse bg-primary-600;
   }
 
   /* Analyzing animation dots */
@@ -92,7 +92,9 @@
   }
 
   @keyframes bounce {
-    0%, 80%, 100% {
+    0%,
+    80%,
+    100% {
       transform: scale(0);
     }
     40% {
@@ -122,11 +124,15 @@
 
   /* Enhanced hover effects */
   .hover\:shadow-lg:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
   .hover\:shadow-md:hover {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
   /* Gradient backgrounds */
@@ -146,4 +152,4 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
-} 
+}

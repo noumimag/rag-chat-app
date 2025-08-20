@@ -14,6 +14,7 @@ WASM fallback), stores vectors in **IndexedDB**, and streams answers from your L
 ---
 
 ## ✨ Features
+
 - On-device embeddings via Transformers.js (WebGPU first, WASM fallback)
 - Chunking in a Web Worker; vectors in IndexedDB (Dexie)
 - Streaming chat UX with abort/undo, retries
@@ -21,6 +22,7 @@ WASM fallback), stores vectors in **IndexedDB**, and streams answers from your L
 - Drop-in **sidebar** you can mount on any docs site
 
 ## 🧱 Tech Stack
+
 - React + TypeScript + Vite
 - Tailwind CSS
 - Dexie (IndexedDB), cosine similarity + MMR reranking
@@ -39,6 +41,7 @@ npm run dev
 ```
 
 **Optional:** use a local LLM (Ollama)
+
 ```bash
 # macOS
 brew install ollama
@@ -54,39 +57,50 @@ The app defaults to `http://localhost:11434`.
 To use OpenAI/Anthropic, set provider + API key in the app UI (stored locally, not committed).
 
 ## 📚 Supported Inputs
+
 .md/.mdx, .json, .txt, or pasted text/code
 
 ## 🧪 Evaluation (optional)
+
 ```bash
 node scripts/eval.js --questions ./data/samples/questions.json --k 5
 ```
 
 ## 🖼️ Screenshots
+
 ### Chat with Documents
+
 ![Chat Screenshot](/public/screenshot-chat.png)
 
 ### Upload & Indexing
+
 ![Upload Screenshot](/public/screenshot-upload.png)
 
 ### Documents View
+
 ![Documents Screenshot](/public/screenshot-documents.png)
 
 ## 🛡️ Security & Privacy
+
 - Embeddings computed in-browser, vectors in IndexedDB
 - Do not commit API keys; use local storage or runtime .env
 - If you proxy requests, restrict CORS to your domain
 
 ## 🗺️ Roadmap
+
 - Provider switcher UI
 - Passage highlights in PDF/MD preview
 - Evals dashboard
 - Export/import vector DB
 
 ## 🤝 Contributing
+
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## 📋 Changelog
+
 See [CHANGELOG.md](./CHANGELOG.md) for a detailed history of changes and releases.
 
 ## 📄 License
+
 MIT

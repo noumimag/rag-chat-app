@@ -37,16 +37,11 @@ const data = [
   { category: 'Q4', value: 200 },
 ];
 
-<BarChart
-  data={data}
-  xField="category"
-  yField="value"
-  title="Quarterly Revenue"
-  color="#3B82F6"
-/>
+<BarChart data={data} xField="category" yField="value" title="Quarterly Revenue" color="#3B82F6" />;
 ```
 
 **Best Use Cases:**
+
 - Comparing values across categories
 - Showing rankings
 - Displaying survey results
@@ -75,10 +70,11 @@ const data = [
   title="User Growth Over Time"
   showGrid={true}
   showPoints={true}
-/>
+/>;
 ```
 
 **Best Use Cases:**
+
 - Time series data
 - Continuous data trends
 - Multiple data series comparison
@@ -105,10 +101,11 @@ const data = [
   title="Device Usage Distribution"
   showLegend={true}
   showValues={true}
-/>
+/>;
 ```
 
 **Best Use Cases:**
+
 - Showing composition or distribution
 - Comparing parts to the whole
 - Simple categorical data
@@ -136,10 +133,11 @@ const data = [
   colorField="category"
   title="Correlation Analysis"
   showTrendLine={true}
-/>
+/>;
 ```
 
 **Best Use Cases:**
+
 - Correlation analysis
 - Outlier detection
 - Clustering identification
@@ -196,6 +194,7 @@ const timeData = [
 ### Color Selection
 
 Choose colors that are:
+
 - **Accessible**: Ensure sufficient contrast
 - **Meaningful**: Use consistent color schemes
 - **Distinct**: Avoid similar colors for different categories
@@ -203,19 +202,15 @@ Choose colors that are:
 ```jsx
 // Good color palette
 const colors = {
-  primary: '#3B82F6',    // Blue
-  success: '#10B981',    // Green
-  warning: '#F59E0B',    // Yellow
-  danger: '#EF4444',     // Red
-  neutral: '#6B7280',    // Gray
+  primary: '#3B82F6', // Blue
+  success: '#10B981', // Green
+  warning: '#F59E0B', // Yellow
+  danger: '#EF4444', // Red
+  neutral: '#6B7280', // Gray
 };
 
 // Apply to chart
-<BarChart
-  data={data}
-  colors={colors}
-  colorField="category"
-/>
+<BarChart data={data} colors={colors} colorField="category" />;
 ```
 
 ### Typography
@@ -239,11 +234,11 @@ Add meaningful interactions:
 ```jsx
 <BarChart
   data={data}
-  onBarClick={(bar) => console.log('Clicked:', bar)}
-  onBarHover={(bar) => showTooltip(bar)}
+  onBarClick={bar => console.log('Clicked:', bar)}
+  onBarHover={bar => showTooltip(bar)}
   tooltip={{
     show: true,
-    format: (value) => `$${value.toLocaleString()}`,
+    format: value => `$${value.toLocaleString()}`,
   }}
 />
 ```
@@ -269,10 +264,7 @@ function AnalyticsDashboard() {
     <div>
       <div className="dashboard-header">
         <h1>Analytics Dashboard</h1>
-        <select 
-          value={selectedTimeframe} 
-          onChange={(e) => setSelectedTimeframe(e.target.value)}
-        >
+        <select value={selectedTimeframe} onChange={e => setSelectedTimeframe(e.target.value)}>
           <option value="7d">Last 7 Days</option>
           <option value="30d">Last 30 Days</option>
           <option value="90d">Last 90 Days</option>
@@ -357,7 +349,7 @@ function InteractiveChart() {
     startDate: '',
     endDate: '',
     category: 'all',
-    metric: 'revenue'
+    metric: 'revenue',
   });
   const [chartType, setChartType] = useState('line');
 
@@ -375,7 +367,7 @@ function InteractiveChart() {
       startDate: '',
       endDate: '',
       category: 'all',
-      metric: 'revenue'
+      metric: 'revenue',
     });
   };
 
@@ -406,17 +398,17 @@ function InteractiveChart() {
             label="Start Date"
             type="date"
             value={filters.startDate}
-            onChange={(e) => handleFilterChange('startDate', e.target.value)}
+            onChange={e => handleFilterChange('startDate', e.target.value)}
           />
           <Input
             label="End Date"
             type="date"
             value={filters.endDate}
-            onChange={(e) => handleFilterChange('endDate', e.target.value)}
+            onChange={e => handleFilterChange('endDate', e.target.value)}
           />
           <select
             value={filters.category}
-            onChange={(e) => handleFilterChange('category', e.target.value)}
+            onChange={e => handleFilterChange('category', e.target.value)}
           >
             <option value="all">All Categories</option>
             <option value="electronics">Electronics</option>
@@ -425,7 +417,7 @@ function InteractiveChart() {
           </select>
           <select
             value={filters.metric}
-            onChange={(e) => handleFilterChange('metric', e.target.value)}
+            onChange={e => handleFilterChange('metric', e.target.value)}
           >
             <option value="revenue">Revenue</option>
             <option value="orders">Orders</option>
@@ -476,11 +468,11 @@ function RealTimeChart() {
   useEffect(() => {
     // Simulate WebSocket connection
     const ws = new WebSocket('wss://api.example.com/realtime');
-    
+
     ws.onopen = () => setIsConnected(true);
     ws.onclose = () => setIsConnected(false);
-    
-    ws.onmessage = (event) => {
+
+    ws.onmessage = event => {
       const newDataPoint = JSON.parse(event.data);
       setData(prev => {
         const updated = [...prev, newDataPoint];
@@ -494,10 +486,8 @@ function RealTimeChart() {
 
   return (
     <div>
-      <div className="status">
-        Status: {isConnected ? '🟢 Connected' : '🔴 Disconnected'}
-      </div>
-      
+      <div className="status">Status: {isConnected ? '🟢 Connected' : '🔴 Disconnected'}</div>
+
       <LineChart
         data={data}
         xField="timestamp"
@@ -597,6 +587,7 @@ function Dashboard() {
 ## Conclusion
 
 Effective data visualization requires careful consideration of:
+
 - **Chart type selection** based on data characteristics
 - **Design principles** for clarity and accessibility
 - **Interactive features** that enhance user experience
@@ -605,4 +596,4 @@ Effective data visualization requires careful consideration of:
 
 By following these guidelines and using our charting library, you can create compelling and informative data visualizations that drive insights and engagement.
 
-For more advanced features and customization options, refer to our [API Documentation](https://docs.company.com/charts) and [Examples Gallery](https://examples.company.com/charts). 
+For more advanced features and customization options, refer to our [API Documentation](https://docs.company.com/charts) and [Examples Gallery](https://examples.company.com/charts).

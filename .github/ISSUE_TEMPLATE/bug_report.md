@@ -8,6 +8,7 @@ labels: bug
 A clear description of what the bug is.
 
 **Steps to reproduce**
+
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
@@ -20,9 +21,10 @@ A clear description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Environment**
+
 - OS: [e.g. macOS, Windows, Linux]
 - Browser: [e.g. Chrome, Firefox, Safari]
 - Commit/Version: [e.g. commit hash or version number]
 
 **Additional context**
-Add any other context about the problem here. 
+Add any other context about the problem here.
