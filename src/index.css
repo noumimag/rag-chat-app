@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: system-ui, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+}
+
+@layer components {
+  .rag-sidebar {
+    @apply fixed left-0 top-0 h-full w-80 bg-gray-900 text-white shadow-2xl;
+    @apply z-40;
+  }
+
+  .rag-content {
+    @apply flex h-full flex-col overflow-hidden bg-black;
+  }
+
+  .rag-header {
+    @apply p-6;
+  }
+
+  .rag-body {
+    @apply flex-1 overflow-y-auto;
+  }
+
+  .rag-footer {
+    @apply border-t border-gray-700 bg-gray-800 p-4;
+  }
+
+  .chat-container {
+    @apply fixed left-80 right-0 top-0 flex h-full flex-col bg-gray-900;
+  }
+
+  .chat-header {
+    @apply flex-shrink-0 px-6 py-4 text-white;
+  }
+
+  .chat-messages {
+    overflow-y: auto;
+    padding: 1.5rem;
+    margin-bottom: 5rem;
+    background-color: rgb(17 24 39);
+    width: 100%;
+    position: absolute;
+    height: 80vh;
+  }
+
+  .chat-input-container {
+    @apply p-6;
+    position: fixed;
+    bottom: 0;
+    left: 20rem;
+    right: 0;
+    z-index: 20;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover\:bg-gray-750:hover {
+    background-color: rgb(55 65 81);
+  }
+
+  .chunk-card {
+    @apply mb-3 rounded-lg border border-gray-200 bg-gray-50 p-3;
+    @apply transition-colors duration-200 hover:bg-gray-100;
+  }
+
+  .citation {
+    @apply inline-block rounded bg-primary-100 px-2 py-1 text-xs text-primary-800;
+    @apply cursor-pointer transition-colors duration-200 hover:bg-primary-200;
+  }
+
+  .streaming-text {
+    @apply whitespace-pre-wrap;
+  }
+
+  .typing-indicator {
+    @apply inline-block h-4 w-2 animate-pulse bg-primary-600;
+  }
+
+  /* Analyzing animation dots */
+  .animate-bounce {
+    animation: bounce 1.4s ease-in-out infinite both;
+  }
+
+  @keyframes bounce {
+    0%,
+    80%,
+    100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+
+  /* Document Library specific styles */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  .transition-all {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced hover effects */
+  .hover\:shadow-lg:hover {
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .hover\:shadow-md:hover {
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  }
+
+  /* Responsive grid improvements */
+  @media (min-width: 768px) {
+    .md\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lg\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
