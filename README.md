@@ -1,4 +1,4 @@
-# Browser-Native RAG Sidebar
+# RAG+LLMs - Browser-Native RAG Chat App
 
 [![CI](https://img.shields.io/github/actions/workflow/status/noumimag/rag-chat-app/ci.yml?label=CI)](https://github.com/noumimag/rag-chat-app/actions)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-informational)
@@ -27,18 +27,6 @@ WASM fallback), stores vectors in **IndexedDB**, and streams answers from your L
 - Optional providers: OpenAI / Anthropic / **Ollama (local)**
 - Tests: Vitest / Playwright (optional)
 - CI: GitHub Actions
-
-## 🔎 Architecture
-```mermaid
-flowchart LR
-  U[User] --> UI[RAG Sidebar (React)]
-  subgraph Browser
-    UI --> W[Web Worker: chunk + embed]
-    W --> IDB[(IndexedDB: vectors + chunks)]
-    UI --> LLM[(LLM Provider / Local Ollama)]
-  end
-  IDB --> UI
-```
 
 ## 🚀 Quick Start
 
@@ -74,10 +62,14 @@ node scripts/eval.js --questions ./data/samples/questions.json --k 5
 ```
 
 ## 🖼️ Screenshots
-Add to `/public` and reference below:
-- `screenshot-chat.png` (chat & citations)
-- `screenshot-upload.png` (upload & indexing)
-- `screenshot-documents.png` (documents information)
+### Chat with Documents
+![Chat Screenshot](/public/screenshot-chat.png)
+
+### Upload & Indexing
+![Upload Screenshot](/public/screenshot-upload.png)
+
+### Documents View
+![Documents Screenshot](/public/screenshot-documents.png)
 
 ## 🛡️ Security & Privacy
 - Embeddings computed in-browser, vectors in IndexedDB
@@ -94,4 +86,4 @@ Add to `/public` and reference below:
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## 📄 License
-MIT 
+MIT
