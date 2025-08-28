@@ -1,6 +1,6 @@
 # Security Policy
 
-If you discover a vulnerability, please email **security@YOUR-DOMAIN**.
+If you discover a vulnerability, please email **noumanii08@gmail.com**.
 
 Include:
 
